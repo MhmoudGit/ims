@@ -1,122 +1,147 @@
 body {
-  font-family: Clarkson;
+	font-family: Clarkson;
 }
 
 * {
-  border-radius: 0 !important;
-  box-sizing: border-box;
+	border-radius: 0 !important;
+	box-sizing: border-box;
 }
 
 :root {
-  --main-color: #032738;
-  --secondary-color: #073950fa;
+	--main-color: #032738;
+	--secondary-color: #073950fa;
 }
 
 button {
-  background-color: transparent;
-  border: none;
+	background-color: transparent;
+	border: none;
 }
 
 .background {
-  background-color: var(--main-color);
+	background-color: var(--main-color);
 }
 
 .dashboard-content {
-  margin-top: 8rem;
-  margin-left: -33px;
+	margin-top: 8rem;
+	margin-left: -33px;
 }
 
-
 .tableOfContent li {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 5px;
-  padding-left: 30px;
-  padding-right: 30px;
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 5px;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 
 ul li div {
-  width: 170px;
+	width: 170px;
 }
 
 ul li:nth-child(odd) {
-  background-color: rgb(177, 175, 175);
+	background-color: rgb(177, 175, 175);
 }
 
 #nav {
-  background-color: var(--main-color);
-  color: white;
+	background-color: var(--main-color);
+	color: white;
 }
 
 #nav a:hover {
-  color: var(--hover-color);
+	color: var(--hover-color);
 }
 
 .custom-btn {
-  color: white;
-  border-radius: 10px;
-  background-color: var(--main-color);
-  border-color: var(--main-color);
-  padding: 10px 20px;
-  width: 200px;
-  font-size: 18px;
-  margin-top: 100px;
-  border-radius: 10px;
+	color: white;
+	border-radius: 10px;
+	background-color: var(--main-color);
+	border-color: var(--main-color);
+	padding: 10px 20px;
+	width: 200px;
+	font-size: 18px;
+	border-radius: 10px;
 }
 
 .custom-btn:hover {
-  background-color: var(--secondary-color);
-  border-color: var(--secondary-color);
-  color: white;
+	background-color: var(--secondary-color);
+	border-color: var(--secondary-color);
+	color: white;
 }
 
+.cancel-btn {
+	color: white;
+	border-radius: 10px;
+	background-color: rgb(255, 59, 59);
+	border-color: var(--main-color);
+	padding: 10px 20px;
+	width: 200px;
+	font-size: 18px;
+	border-radius: 10px;
+}
+
+.cancel-btn:hover {
+	background-color: rgb(240, 52, 52);
+	border-color: var(--secondary-color);
+	color: white;
+}
 
 /*  */
 section {
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  place-content: center;
+	height: 100vh;
+	width: 100vw;
+	display: grid;
+	place-content: center;
 }
 
 form {
-  padding: 30px;
-  box-shadow: 0 1px 10px #cbcaca;
-  width: 700px;
+	padding: 30px;
+	box-shadow: 0 1px 10px #cbcaca;
+	width: 700px;
+	height: 700px;
 }
 
+.formdata {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 500px;
+	margin-bottom: 30px;
+  padding: 5px;
+}
 
-@media (max-width:700px) {
-  form {
-    width: 400px;
+@media (max-width: 700px) {
+	form {
+		width: 400px;
+	}
 
-  }
+	.row {
+		flex-direction: column;
+	}
 
-  .row {
-    flex-direction: column;
-  }
+	.custom-btn {
+		width: 100%;
+	}
 
-  .custom-btn {
-    width: 100%;
-  }
+	.cancel-btn {
+		width: 100%;
+	}
 }
 
 form h1 {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 label {
-  margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 form .row {
-  margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .register-btn {
-  min-width: 250px;
+	min-width: 250px;
 }
 
 /* 
@@ -124,204 +149,206 @@ form .row {
   position: relative;
 } */
 
-
-
 #landloginform .dividing-line span {
-  position: relative;
-  top: 20px;
+	position: relative;
+	top: 20px;
 }
 
 #landloginform .dividing-line span::after {
-  position: absolute;
-  content: "";
-  top: 8px;
-  right: 28px;
-  width: 298px;
-  height: 2px;
-  background-color: #8f8f8f;
+	position: absolute;
+	content: '';
+	top: 8px;
+	right: 28px;
+	width: 298px;
+	height: 2px;
+	background-color: #8f8f8f;
 }
 
 #landloginform .dividing-line span::before {
-  position: absolute;
-  content: "";
-  top: 8px;
-  left: 28px;
-  width: 298px;
-  height: 2px;
-  background-color: #8f8f8f;
+	position: absolute;
+	content: '';
+	top: 8px;
+	left: 28px;
+	width: 298px;
+	height: 2px;
+	background-color: #8f8f8f;
 }
 
-@media(max-width:700px) {
-
-  #landloginform .dividing-line span::before,
-  #landloginform .dividing-line span::after {
-    width: 100px;
-    height: 2px;
-  }
+@media (max-width: 700px) {
+	#landloginform .dividing-line span::before,
+	#landloginform .dividing-line span::after {
+		width: 100px;
+		height: 2px;
+	}
 }
-
 
 .notifications {
-  position: fixed;
-  left: 0;
-  bottom: 10px;
-  width: 450px;
-  transform: translateX(-500px);
-  transition: all 0.5s linear;
-  height: 100vh;
-  overflow-y: scroll;
-  z-index: 1000;
-  background-color: white;
+	position: fixed;
+	left: 0;
+	bottom: 10px;
+	width: 450px;
+	transform: translateX(-500px);
+	transition: all 0.5s linear;
+	height: 100vh;
+	overflow-y: scroll;
+	z-index: 1000;
+	background-color: white;
 }
 
-@media(max-width:700px) {
-  .notifications {
-    width: 300px;
-  }
+@media (max-width: 700px) {
+	.notifications {
+		width: 300px;
+	}
 }
 
 .notifications.show {
-  transform: translateX(0);
-
+	transform: translateX(0);
 }
 
 .icon {
-  position: fixed;
-  bottom: 30px;
-  left: 30px;
-  cursor: pointer;
+	position: fixed;
+	bottom: 30px;
+	left: 30px;
+	cursor: pointer;
 }
 
 .icon i {
-  font-size: 50px;
-
+	font-size: 50px;
 }
 
 .numberOfNotifications {
-  position: absolute;
-  top: -20px;
-  right: -10px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  overflow: hidden;
+	position: absolute;
+	top: -20px;
+	right: -10px;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: red;
+	color: white;
+	border-radius: 50%;
+	overflow: hidden;
 }
 
 .icon.hidden {
-  display: none;
+	display: none;
 }
 
 .notifications .title {
-
-  font-size: 26px;
-  text-transform: capitalize;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #cecaca;
-  padding: 17px;
-  box-shadow: 0 1px 10px #cbcaca;
+	font-size: 26px;
+	text-transform: capitalize;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #cecaca;
+	padding: 17px;
+	box-shadow: 0 1px 10px #cbcaca;
 }
 
 .notifications .title i {
-  cursor: pointer;
-  font-size: 40px;
+	cursor: pointer;
+	font-size: 40px;
 }
 
-
-
 .notifications .notifications_container {
-  padding: 10px;
+	padding: 10px;
 }
 
 .notifications .notifications_container .notifications_content {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
 }
 
 .notifications .notifications_container .notifications_content .notification {
-  padding: 15px;
-  box-shadow: 0 1px 10px #cbcaca;
-  border-radius: 5px;
-  margin-bottom: 10px;
-
+	padding: 15px;
+	box-shadow: 0 1px 10px #cbcaca;
+	border-radius: 5px;
+	margin-bottom: 10px;
 }
 
-.notifications .notifications_container .notifications_content .notification .sub_title {
-  font-size: 22px;
-  text-transform: capitalize;
-  margin-bottom: 10px;
+.notifications
+	.notifications_container
+	.notifications_content
+	.notification
+	.sub_title {
+	font-size: 22px;
+	text-transform: capitalize;
+	margin-bottom: 10px;
 }
 
-.notifications .notifications_container .notifications_content .notification .time {
-  text-align: end;
-  font-size: 14px;
-  color: #8f8f8f;
+.notifications
+	.notifications_container
+	.notifications_content
+	.notification
+	.time {
+	text-align: end;
+	font-size: 14px;
+	color: #8f8f8f;
 }
 
-.notifications .notifications_container .notifications_content .notification .close_btn {
-  text-align: start;
-  border-top: 1px solid #cecaca;
-  margin-top: 10px;
-  padding-top: 10px;
-
+.notifications
+	.notifications_container
+	.notifications_content
+	.notification
+	.close_btn {
+	text-align: start;
+	border-top: 1px solid #cecaca;
+	margin-top: 10px;
+	padding-top: 10px;
 }
 
 .dismissAll_btn {
-  position: relative;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px;
-  background-color: rgb(11, 169, 197);
-  overflow: hidden;
-  width: fit-content;
+	position: relative;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 10px;
+	background-color: rgb(11, 169, 197);
+	overflow: hidden;
+	width: fit-content;
 }
 
 .dismissAll_btn button {
-  color: white;
-  border-radius: 50px;
-
+	color: white;
+	border-radius: 50px;
 }
 
 .dismiss_btn {
-  color: rgb(11, 169, 197);
-
+	color: rgb(11, 169, 197);
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+	width: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+	box-shadow: inset 0 0 5px grey;
+	border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(226, 220, 220);
-  border-radius: 10px;
+	background: rgb(226, 220, 220);
+	border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #e7e7e7;
+	background: #e7e7e7;
 }
 
 .footer {
-  background-color: var(--main-color);
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+	background-color: var(--main-color);
 }
 
 .footer p {
-  margin: 0;
+	margin: 0;
 }
 
 .footer a:hover {
-  transform: scale(1.1);
+	transform: scale(1.1);
 }

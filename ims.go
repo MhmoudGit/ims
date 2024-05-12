@@ -98,7 +98,7 @@ func main() {
 		return c.Render(http.StatusOK, "notFound", nil)
 	})
 
-	E.Logger.Fatal(E.Start(":8080"))
+	E.Logger.Fatal(E.Start("localhost:8000"))
 }
 
 type etmplt struct {

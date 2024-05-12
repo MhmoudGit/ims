@@ -1,11 +1,11 @@
-{{define "create-project"}}
+{{define "edit-project"}}
 
 <html>
 {{template "head" .}}
 
 <body>
-    <section class="create-project">
-        <form action="/create-project"  method="post" id="create-project">
+    <section class="edit-project">
+        <form action="/edit-project"  method="post" id="edit-project">
             <h1>create a new project</h1>
             <div class="formdata">
             <div class="row">
@@ -162,7 +162,7 @@
 }
 
     function cancelForm() {
-            document.getElementById("create-project").reset();
+            document.getElementById("edit-project").reset();
             window.location.href = "/dashboard"; // Redirect to the "/dashboard" route
         }
 </script>
