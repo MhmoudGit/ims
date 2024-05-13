@@ -126,12 +126,14 @@
                         </span>
                     </div>
                     <!-- email field should not appear on first reload -->
+                    {{if gt (len .Edges.Members) 1}}
                     {{range .Edges.Members}}
                     <div> 
                         <input type="email" name="members[]" id="members" value={{.Email}}>
                         <button type="button"  onclick="removeEmailInput()" style="background-color: red; color: white; border: none; cursor: pointer;"> Remove Email
                         </button>
                     </div>
+                    {{end}}
                     {{end}}
             </div>
         </div>
