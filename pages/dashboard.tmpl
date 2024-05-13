@@ -25,6 +25,8 @@
                            <th>Type</th>
                            <th>State</th>
                            <th>Project Nature</th>
+                           <th>No. of top level scope packages</th>
+                           <th></th>
                            <th></th>
                        </tr>
                    </thead>
@@ -36,7 +38,9 @@
                            <td>{{.Type}}</td>
                            <td>{{.State}}</td>
                            <td>{{.ProjectNature}}</td>
-                           <td style="background-color: rgb(255, 83, 83); color: black; padding: 0;"><button onclick="deleteItem('{{.ID}}')" style="width: 100%; height: 100%; padding: 5px; margin: 0; border: none; background: none; cursor: pointer;">Delete</button></td>
+                           <td>{{.Tlsp}}</td>
+                           <td style="background-color: rgb(255, 83, 83); color: white; padding: 0;"><button onclick="deleteItem('{{.ID}}')" style="width: 100%; height: 100%; padding: 5px; margin: 0; border: none; background: none; cursor: pointer;">Delete</button></td>
+                           <td style="background-color: rgb(67, 67, 67); color: white; padding: 0;"><a href="/project-edit?id={{.ID}}"  style=" color: white; width: 100%; height: 100%; padding: 5px; margin: 0; border: none; background: none; cursor: pointer; text-decoration: none;">Edit</button></td>
                        </tr>
                        {{end}}
                    </tbody>
@@ -60,7 +64,7 @@
                     throw new Error('Failed to delete item');
                 }
                 // Handle successful deletion
-                // window.location.reload(); // Reload the window
+                window.location.reload(); // Reload the window
             })
             .catch(error => {
                 alert('Error deleting item:', error)

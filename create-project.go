@@ -3,32 +3,39 @@ package main
 import (
 	"context"
 	"fmt"
+	"net/http"
+
 	"github.com/labstack/echo/v4"
 	"github.com/tarqeem/ims/ent"
 	"github.com/tarqeem/ims/ent/project"
 	"github.com/tarqeem/ims/ent/user"
-	"net/http"
 )
 
+type SuccessData struct {
+	Msg string
+}
+
 var CreateProjectEnd = "/create-project"
+var UpdateProjectEnd = "/edit-project"
 
 type CreateProjectDTO struct {
-	Name                string `form:"name"`
-	Owner               string `form:"owner"`
-	Location            string `form:"location"`
-	Type                string `form:"type"`
-	DeliveryStrategy    string `form:"deliveryStrategy"`
-	CurrentState        string `form:"currentState"`
-	ContractingStrategy string `form:"contractingStrategy"`
-	DollarValue         int    `form:"dollarValue"`
-
-	ExecutionLocation string `form:"executionLocation"`
-
-	ProjectNature string   `form:"projectNature"`
-	Leader        string   `form:"leader"`
-	Members       []string `form:"members[]"`
-	PageTitle     string
-	Err           string
+	Name                string   `form:"name"`
+	Owner               string   `form:"owner"`
+	Location            string   `form:"location"`
+	Type                string   `form:"type"`
+	DeliveryStrategy    string   `form:"deliveryStrategy"`
+	CurrentState        string   `form:"currentState"`
+	ContractingStrategy string   `form:"contractingStrategy"`
+	DollarValue         int      `form:"dollarValue"`
+	ExecutionLocation   string   `form:"executionLocation"`
+	Tlsp                int      `form:"tlsp"` // No. of top level scope packages
+	Jvp                 int      `form:"jvp"`  // No. of joint-venture partners
+	Ish                 int      `form:"ish"`  // No. of involved stackeholders
+	ProjectNature       string   `form:"projectNature"`
+	Leader              string   `form:"leader"`
+	Members             []string `form:"members[]"`
+	PageTitle           string
+	Err                 string
 }
 
 func createProject() {
@@ -56,6 +63,9 @@ func createProject() {
 			SetContractingStrategies(r.ContractingStrategy).
 			SetDollarValue(r.DollarValue).
 			SetExecutionLocation(r.ExecutionLocation).
+			SetTlsp(r.Tlsp).
+			SetJvp(r.Jvp).
+			SetIsh(r.Ish).
 			Save(c.Request().Context())
 
 		if err != nil {
@@ -80,7 +90,7 @@ func createProject() {
 				&CreateProjectDTO{Err: err.Error()})
 		}
 
-		err = c.Render(http.StatusOK, p, nil)
+		err = c.Render(http.StatusOK, p, SuccessData{Msg: "created"})
 		if err != nil {
 			return err
 		}

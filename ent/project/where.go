@@ -93,6 +93,21 @@ func ExecutionLocation(v string) predicate.Project {
 	return predicate.Project(sql.FieldEQ(FieldExecutionLocation, v))
 }
 
+// Tlsp applies equality check predicate on the "tlsp" field. It's identical to TlspEQ.
+func Tlsp(v int) predicate.Project {
+	return predicate.Project(sql.FieldEQ(FieldTlsp, v))
+}
+
+// Jvp applies equality check predicate on the "jvp" field. It's identical to JvpEQ.
+func Jvp(v int) predicate.Project {
+	return predicate.Project(sql.FieldEQ(FieldJvp, v))
+}
+
+// Ish applies equality check predicate on the "ish" field. It's identical to IshEQ.
+func Ish(v int) predicate.Project {
+	return predicate.Project(sql.FieldEQ(FieldIsh, v))
+}
+
 // NameEQ applies the EQ predicate on the "name" field.
 func NameEQ(v string) predicate.Project {
 	return predicate.Project(sql.FieldEQ(FieldName, v))
@@ -626,6 +641,126 @@ func ExecutionLocationEqualFold(v string) predicate.Project {
 // ExecutionLocationContainsFold applies the ContainsFold predicate on the "execution_location" field.
 func ExecutionLocationContainsFold(v string) predicate.Project {
 	return predicate.Project(sql.FieldContainsFold(FieldExecutionLocation, v))
+}
+
+// TlspEQ applies the EQ predicate on the "tlsp" field.
+func TlspEQ(v int) predicate.Project {
+	return predicate.Project(sql.FieldEQ(FieldTlsp, v))
+}
+
+// TlspNEQ applies the NEQ predicate on the "tlsp" field.
+func TlspNEQ(v int) predicate.Project {
+	return predicate.Project(sql.FieldNEQ(FieldTlsp, v))
+}
+
+// TlspIn applies the In predicate on the "tlsp" field.
+func TlspIn(vs ...int) predicate.Project {
+	return predicate.Project(sql.FieldIn(FieldTlsp, vs...))
+}
+
+// TlspNotIn applies the NotIn predicate on the "tlsp" field.
+func TlspNotIn(vs ...int) predicate.Project {
+	return predicate.Project(sql.FieldNotIn(FieldTlsp, vs...))
+}
+
+// TlspGT applies the GT predicate on the "tlsp" field.
+func TlspGT(v int) predicate.Project {
+	return predicate.Project(sql.FieldGT(FieldTlsp, v))
+}
+
+// TlspGTE applies the GTE predicate on the "tlsp" field.
+func TlspGTE(v int) predicate.Project {
+	return predicate.Project(sql.FieldGTE(FieldTlsp, v))
+}
+
+// TlspLT applies the LT predicate on the "tlsp" field.
+func TlspLT(v int) predicate.Project {
+	return predicate.Project(sql.FieldLT(FieldTlsp, v))
+}
+
+// TlspLTE applies the LTE predicate on the "tlsp" field.
+func TlspLTE(v int) predicate.Project {
+	return predicate.Project(sql.FieldLTE(FieldTlsp, v))
+}
+
+// JvpEQ applies the EQ predicate on the "jvp" field.
+func JvpEQ(v int) predicate.Project {
+	return predicate.Project(sql.FieldEQ(FieldJvp, v))
+}
+
+// JvpNEQ applies the NEQ predicate on the "jvp" field.
+func JvpNEQ(v int) predicate.Project {
+	return predicate.Project(sql.FieldNEQ(FieldJvp, v))
+}
+
+// JvpIn applies the In predicate on the "jvp" field.
+func JvpIn(vs ...int) predicate.Project {
+	return predicate.Project(sql.FieldIn(FieldJvp, vs...))
+}
+
+// JvpNotIn applies the NotIn predicate on the "jvp" field.
+func JvpNotIn(vs ...int) predicate.Project {
+	return predicate.Project(sql.FieldNotIn(FieldJvp, vs...))
+}
+
+// JvpGT applies the GT predicate on the "jvp" field.
+func JvpGT(v int) predicate.Project {
+	return predicate.Project(sql.FieldGT(FieldJvp, v))
+}
+
+// JvpGTE applies the GTE predicate on the "jvp" field.
+func JvpGTE(v int) predicate.Project {
+	return predicate.Project(sql.FieldGTE(FieldJvp, v))
+}
+
+// JvpLT applies the LT predicate on the "jvp" field.
+func JvpLT(v int) predicate.Project {
+	return predicate.Project(sql.FieldLT(FieldJvp, v))
+}
+
+// JvpLTE applies the LTE predicate on the "jvp" field.
+func JvpLTE(v int) predicate.Project {
+	return predicate.Project(sql.FieldLTE(FieldJvp, v))
+}
+
+// IshEQ applies the EQ predicate on the "ish" field.
+func IshEQ(v int) predicate.Project {
+	return predicate.Project(sql.FieldEQ(FieldIsh, v))
+}
+
+// IshNEQ applies the NEQ predicate on the "ish" field.
+func IshNEQ(v int) predicate.Project {
+	return predicate.Project(sql.FieldNEQ(FieldIsh, v))
+}
+
+// IshIn applies the In predicate on the "ish" field.
+func IshIn(vs ...int) predicate.Project {
+	return predicate.Project(sql.FieldIn(FieldIsh, vs...))
+}
+
+// IshNotIn applies the NotIn predicate on the "ish" field.
+func IshNotIn(vs ...int) predicate.Project {
+	return predicate.Project(sql.FieldNotIn(FieldIsh, vs...))
+}
+
+// IshGT applies the GT predicate on the "ish" field.
+func IshGT(v int) predicate.Project {
+	return predicate.Project(sql.FieldGT(FieldIsh, v))
+}
+
+// IshGTE applies the GTE predicate on the "ish" field.
+func IshGTE(v int) predicate.Project {
+	return predicate.Project(sql.FieldGTE(FieldIsh, v))
+}
+
+// IshLT applies the LT predicate on the "ish" field.
+func IshLT(v int) predicate.Project {
+	return predicate.Project(sql.FieldLT(FieldIsh, v))
+}
+
+// IshLTE applies the LTE predicate on the "ish" field.
+func IshLTE(v int) predicate.Project {
+	return predicate.Project(sql.FieldLTE(FieldIsh, v))
 }
 
 // HasLeader applies the HasEdge predicate on the "leader" edge.

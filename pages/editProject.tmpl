@@ -5,18 +5,18 @@
 
 <body>
     <section class="edit-project">
-        <form action="/edit-project"  method="post" id="edit-project">
-            <h1>create a new project</h1>
+        <form action="/edit-project/{{.ID}}"  method="post" id="edit-project">
+            <h1>Edit project</h1>
             <div class="formdata">
             <div class="row">
                 <div class="col">
                     <label for="project-name">Project Name</label>
-                    <input type="text" class="form-control" id="project-name" name="name" placeholder="Project Name"
+                    <input type="text" class="form-control" id="project-name" name="name" value={{.Name}}
                         aria-label="Project Name">
                 </div>
                 <div class="col">
                     <label for="project-type">Project Type</label>
-                    <select id="project-type" class="form-control" name="type">
+                    <select id="project-type" class="form-control" name="type" value={{.Type}}>
                         <option value="Chemical Manufacturing">Chemical Manufacturing</option>
                         <option value="Stadium Musuem">Stadium Musuem</option>
                         <option value="Metal refining or processing">Metal refining or processing</option>
@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col">
                     <label for="project-delivery">Project Delivery Strategies</label>
-                    <select id="project-delivery" class="form-control" name="deliveryStrategy">
+                    <select id="project-delivery" class="form-control" name="deliveryStrategy" value={{.DeliveryStrategies}}>
                         <option value="Waterfall">Waterfall</option>
                         <option value="Agile">Agile </option>
                         <option value="Lean">Lean</option>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col">
                     <label for="project-current-state">Project Current State</label>
-                    <select id="project-current-state" class="form-control", name="currentState">
+                    <select id="project-current-state" class="form-control", name="currentState" value={{.State}}>
                         <option value="Front-end planning">Front-end planning</option>
                         <option value="Design">In Design</option>
                         <option value="Procurement">Procurement</option>
@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col">
                     <label for="project-contracting-strategies">Project Contracting Strategies</label>
-                    <select id="project-contracting-strategies" class="form-control" name="contractingStrategy">
+                    <select id="project-contracting-strategies" class="form-control" name="contractingStrategy" value={{.ContractingStrategies}}>
                         <option value="Fixed Price">Fixed Price</option>
                         <option value="Unit Price">Unit Price</option>
                         <option value="Maximum Price">Maximum Price</option>
@@ -60,29 +60,29 @@
                 </div>
                 <div class="col">
                     <label for="dollarValue">Project Dollar Value:</label>
-                    <input type="number" class="form-control" id="dollarValue" name="dollarValue" placeholder="$">
+                    <input type="number" class="form-control" id="dollarValue" name="dollarValue" value={{.DollarValue}}>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label for="project-location">Location</label>
-                    <input type="text" class="form-control" id="project-location" name="location" placeholder="Location">
+                    <input type="text" class="form-control" id="project-location" name="location" value={{.Location}}>
                 </div>
                 <div class="col">
                     <label for="execution-locations">Project Execution Location</label>
-                    <input type="text" class="form-control" id="execution-locations" name="executionLocation" placeholder="Location">
+                    <input type="text" class="form-control" id="execution-locations" name="executionLocation" value={{.ExecutionLocation}}>
 
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label for="owners">Owners</label>
-                    <input type="text" class="form-control" id="owners" name="owner" placeholder="Name of Owner">
+                    <input type="text" class="form-control" id="owners" name="owner" value={{.Owner}}>
 
                 </div>
                 <div class="col">
                     <label for="project-nature">Project Nature</label>
-                    <select  id="project-nature" class="form-control" name="projectNature">
+                    <select  id="project-nature" class="form-control" name="projectNature" value={{.ProjectNature}}>
                         <option value="Greenfield"> Greenfield </option>
                         <option value="Brownfield"> Brownfield </option>
                     </select>
@@ -93,27 +93,29 @@
             <div class="row">
                 <div class="col">
                     <label for="tlsp">No. of top level scope packages</label>
-                    <input type="number" class="form-control" id="tlsp" name="tlsp" placeholder="Enter a number">
+                    <input type="number" class="form-control" id="tlsp" name="tlsp" value={{.Tlsp}}>
 
                 </div>
                 <div class="col">
                     <label for="jvp">No. of joint-venture partners </label>
-                    <input type="number" class="form-control" id="jvp" name="jvp" placeholder="Enter a number">
+                    <input type="number" class="form-control" id="jvp" name="jvp" value={{.Jvp}}>
 
                 </div>
                 <div class="col">
                     <label for="ish">No. of involved stackeholders </label>
-                    <input type="number" class="form-control" id="ish" name="ish" placeholder="Enter a number">
+                    <input type="number" class="form-control" id="ish" name="ish" value={{.Ish}}>
 
                 </div>
             </div>
 
+            {{range .Edges.Leader}}
             <div class="row">
                     <div class="col">
                         <label for="leader">Leader</label>
-                        <input type="email" class="form-control" id="leader" name="leader" placeholder="Email of Project Leader">
+                        <input type="email" class="form-control" id="leader" name="leader" value="{{.Email}}">
                     </div>
             </div>
+            {{end}}
 
             <div id="emailInputs">
                     <div>
@@ -124,11 +126,13 @@
                         </span>
                     </div>
                     <!-- email field should not appear on first reload -->
-                    <!-- <div> 
-                        <input type="email" name="members[]" id="members" placeholder="Email of Member">
+                    {{range .Edges.Members}}
+                    <div> 
+                        <input type="email" name="members[]" id="members" value={{.Email}}>
                         <button type="button"  onclick="removeEmailInput()" style="background-color: red; color: white; border: none; cursor: pointer;"> Remove Email
                         </button>
-                    </div> -->
+                    </div>
+                    {{end}}
             </div>
         </div>
             <button type="submit" class="custom-btn">Save</button>

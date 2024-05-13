@@ -39,14 +39,14 @@ func dashboard() {
 				&DashboardDTO{Err: err.Error()})
 		}
 		data.User = u
-		memberProjects, err := u.
-			QueryProjects().
-			All(context.Background())
-		if err != nil {
-			return c.Render(http.StatusInternalServerError, "fail",
-				&DashboardDTO{Err: err.Error()})
-		}
-		data.Projects = append(data.Projects, memberProjects...)
+		// memberProjects, err := u.
+		// 	QueryProjects().
+		// 	All(context.Background())
+		// if err != nil {
+		// 	return c.Render(http.StatusInternalServerError, "fail",
+		// 		&DashboardDTO{Err: err.Error()})
+		// }
+		// data.Projects = append(data.Projects, memberProjects...)
 
 		coordinatorProjects, err := u.
 			QueryCoordinatorOfProject().

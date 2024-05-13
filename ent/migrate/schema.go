@@ -51,7 +51,7 @@ var (
 		{Name: "description", Type: field.TypeString},
 		{Name: "creator", Type: field.TypeString, Default: "guest"},
 		{Name: "status", Type: field.TypeEnum, Enums: []string{"Pending", "Approved", "Declined"}, Default: "Pending"},
-		{Name: "date", Type: field.TypeString, Default: "24 Apr 2024"},
+		{Name: "date", Type: field.TypeString, Default: "13 May 2024"},
 		{Name: "project_issues", Type: field.TypeInt, Nullable: true},
 	}
 	// IssuesTable holds the schema information for the "issues" table.
@@ -81,6 +81,9 @@ var (
 		{Name: "contracting_strategies", Type: field.TypeString},
 		{Name: "dollar_value", Type: field.TypeInt},
 		{Name: "execution_location", Type: field.TypeString},
+		{Name: "tlsp", Type: field.TypeInt, Default: 0},
+		{Name: "jvp", Type: field.TypeInt, Default: 0},
+		{Name: "ish", Type: field.TypeInt, Default: 0},
 	}
 	// ProjectsTable holds the schema information for the "projects" table.
 	ProjectsTable = &schema.Table{

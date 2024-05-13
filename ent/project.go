@@ -36,6 +36,12 @@ type Project struct {
 	DollarValue int `json:"dollar_value,omitempty"`
 	// ExecutionLocation holds the value of the "execution_location" field.
 	ExecutionLocation string `json:"execution_location,omitempty"`
+	// Tlsp holds the value of the "tlsp" field.
+	Tlsp int `json:"tlsp,omitempty"`
+	// Jvp holds the value of the "jvp" field.
+	Jvp int `json:"jvp,omitempty"`
+	// Ish holds the value of the "ish" field.
+	Ish int `json:"ish,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
 	// The values are being populated by the ProjectQuery when eager-loading is set.
 	Edges        ProjectEdges `json:"edges"`
@@ -98,7 +104,7 @@ func (*Project) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case project.FieldID, project.FieldDollarValue:
+		case project.FieldID, project.FieldDollarValue, project.FieldTlsp, project.FieldJvp, project.FieldIsh:
 			values[i] = new(sql.NullInt64)
 		case project.FieldName, project.FieldOwner, project.FieldLocation, project.FieldType, project.FieldProjectNature, project.FieldDeliveryStrategies, project.FieldState, project.FieldContractingStrategies, project.FieldExecutionLocation:
 			values[i] = new(sql.NullString)
@@ -182,6 +188,24 @@ func (pr *Project) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field execution_location", values[i])
 			} else if value.Valid {
 				pr.ExecutionLocation = value.String
+			}
+		case project.FieldTlsp:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field tlsp", values[i])
+			} else if value.Valid {
+				pr.Tlsp = int(value.Int64)
+			}
+		case project.FieldJvp:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field jvp", values[i])
+			} else if value.Valid {
+				pr.Jvp = int(value.Int64)
+			}
+		case project.FieldIsh:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field ish", values[i])
+			} else if value.Valid {
+				pr.Ish = int(value.Int64)
 			}
 		default:
 			pr.selectValues.Set(columns[i], values[i])
@@ -268,6 +292,15 @@ func (pr *Project) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("execution_location=")
 	builder.WriteString(pr.ExecutionLocation)
+	builder.WriteString(", ")
+	builder.WriteString("tlsp=")
+	builder.WriteString(fmt.Sprintf("%v", pr.Tlsp))
+	builder.WriteString(", ")
+	builder.WriteString("jvp=")
+	builder.WriteString(fmt.Sprintf("%v", pr.Jvp))
+	builder.WriteString(", ")
+	builder.WriteString("ish=")
+	builder.WriteString(fmt.Sprintf("%v", pr.Ish))
 	builder.WriteByte(')')
 	return builder.String()
 }

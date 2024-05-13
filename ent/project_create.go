@@ -81,6 +81,48 @@ func (pc *ProjectCreate) SetExecutionLocation(s string) *ProjectCreate {
 	return pc
 }
 
+// SetTlsp sets the "tlsp" field.
+func (pc *ProjectCreate) SetTlsp(i int) *ProjectCreate {
+	pc.mutation.SetTlsp(i)
+	return pc
+}
+
+// SetNillableTlsp sets the "tlsp" field if the given value is not nil.
+func (pc *ProjectCreate) SetNillableTlsp(i *int) *ProjectCreate {
+	if i != nil {
+		pc.SetTlsp(*i)
+	}
+	return pc
+}
+
+// SetJvp sets the "jvp" field.
+func (pc *ProjectCreate) SetJvp(i int) *ProjectCreate {
+	pc.mutation.SetJvp(i)
+	return pc
+}
+
+// SetNillableJvp sets the "jvp" field if the given value is not nil.
+func (pc *ProjectCreate) SetNillableJvp(i *int) *ProjectCreate {
+	if i != nil {
+		pc.SetJvp(*i)
+	}
+	return pc
+}
+
+// SetIsh sets the "ish" field.
+func (pc *ProjectCreate) SetIsh(i int) *ProjectCreate {
+	pc.mutation.SetIsh(i)
+	return pc
+}
+
+// SetNillableIsh sets the "ish" field if the given value is not nil.
+func (pc *ProjectCreate) SetNillableIsh(i *int) *ProjectCreate {
+	if i != nil {
+		pc.SetIsh(*i)
+	}
+	return pc
+}
+
 // AddLeaderIDs adds the "leader" edge to the User entity by IDs.
 func (pc *ProjectCreate) AddLeaderIDs(ids ...int) *ProjectCreate {
 	pc.mutation.AddLeaderIDs(ids...)
@@ -148,6 +190,7 @@ func (pc *ProjectCreate) Mutation() *ProjectMutation {
 
 // Save creates the Project in the database.
 func (pc *ProjectCreate) Save(ctx context.Context) (*Project, error) {
+	pc.defaults()
 	return withHooks(ctx, pc.sqlSave, pc.mutation, pc.hooks)
 }
 
@@ -170,6 +213,22 @@ func (pc *ProjectCreate) Exec(ctx context.Context) error {
 func (pc *ProjectCreate) ExecX(ctx context.Context) {
 	if err := pc.Exec(ctx); err != nil {
 		panic(err)
+	}
+}
+
+// defaults sets the default values of the builder before save.
+func (pc *ProjectCreate) defaults() {
+	if _, ok := pc.mutation.Tlsp(); !ok {
+		v := project.DefaultTlsp
+		pc.mutation.SetTlsp(v)
+	}
+	if _, ok := pc.mutation.Jvp(); !ok {
+		v := project.DefaultJvp
+		pc.mutation.SetJvp(v)
+	}
+	if _, ok := pc.mutation.Ish(); !ok {
+		v := project.DefaultIsh
+		pc.mutation.SetIsh(v)
 	}
 }
 
@@ -234,6 +293,30 @@ func (pc *ProjectCreate) check() error {
 	}
 	if _, ok := pc.mutation.ExecutionLocation(); !ok {
 		return &ValidationError{Name: "execution_location", err: errors.New(`ent: missing required field "Project.execution_location"`)}
+	}
+	if _, ok := pc.mutation.Tlsp(); !ok {
+		return &ValidationError{Name: "tlsp", err: errors.New(`ent: missing required field "Project.tlsp"`)}
+	}
+	if v, ok := pc.mutation.Tlsp(); ok {
+		if err := project.TlspValidator(v); err != nil {
+			return &ValidationError{Name: "tlsp", err: fmt.Errorf(`ent: validator failed for field "Project.tlsp": %w`, err)}
+		}
+	}
+	if _, ok := pc.mutation.Jvp(); !ok {
+		return &ValidationError{Name: "jvp", err: errors.New(`ent: missing required field "Project.jvp"`)}
+	}
+	if v, ok := pc.mutation.Jvp(); ok {
+		if err := project.JvpValidator(v); err != nil {
+			return &ValidationError{Name: "jvp", err: fmt.Errorf(`ent: validator failed for field "Project.jvp": %w`, err)}
+		}
+	}
+	if _, ok := pc.mutation.Ish(); !ok {
+		return &ValidationError{Name: "ish", err: errors.New(`ent: missing required field "Project.ish"`)}
+	}
+	if v, ok := pc.mutation.Ish(); ok {
+		if err := project.IshValidator(v); err != nil {
+			return &ValidationError{Name: "ish", err: fmt.Errorf(`ent: validator failed for field "Project.ish": %w`, err)}
+		}
 	}
 	return nil
 }
@@ -300,6 +383,18 @@ func (pc *ProjectCreate) createSpec() (*Project, *sqlgraph.CreateSpec) {
 	if value, ok := pc.mutation.ExecutionLocation(); ok {
 		_spec.SetField(project.FieldExecutionLocation, field.TypeString, value)
 		_node.ExecutionLocation = value
+	}
+	if value, ok := pc.mutation.Tlsp(); ok {
+		_spec.SetField(project.FieldTlsp, field.TypeInt, value)
+		_node.Tlsp = value
+	}
+	if value, ok := pc.mutation.Jvp(); ok {
+		_spec.SetField(project.FieldJvp, field.TypeInt, value)
+		_node.Jvp = value
+	}
+	if value, ok := pc.mutation.Ish(); ok {
+		_spec.SetField(project.FieldIsh, field.TypeInt, value)
+		_node.Ish = value
 	}
 	if nodes := pc.mutation.LeaderIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
@@ -386,6 +481,7 @@ func (pcb *ProjectCreateBulk) Save(ctx context.Context) ([]*Project, error) {
 	for i := range pcb.builders {
 		func(i int, root context.Context) {
 			builder := pcb.builders[i]
+			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ProjectMutation)
 				if !ok {

@@ -34,6 +34,12 @@ const (
 	FieldDollarValue = "dollar_value"
 	// FieldExecutionLocation holds the string denoting the execution_location field in the database.
 	FieldExecutionLocation = "execution_location"
+	// FieldTlsp holds the string denoting the tlsp field in the database.
+	FieldTlsp = "tlsp"
+	// FieldJvp holds the string denoting the jvp field in the database.
+	FieldJvp = "jvp"
+	// FieldIsh holds the string denoting the ish field in the database.
+	FieldIsh = "ish"
 	// EdgeLeader holds the string denoting the leader edge name in mutations.
 	EdgeLeader = "leader"
 	// EdgeCoordinator holds the string denoting the coordinator edge name in mutations.
@@ -81,6 +87,9 @@ var Columns = []string{
 	FieldContractingStrategies,
 	FieldDollarValue,
 	FieldExecutionLocation,
+	FieldTlsp,
+	FieldJvp,
+	FieldIsh,
 }
 
 var (
@@ -114,6 +123,18 @@ var (
 	ContractingStrategiesValidator func(string) error
 	// DollarValueValidator is a validator for the "dollar_value" field. It is called by the builders before save.
 	DollarValueValidator func(int) error
+	// DefaultTlsp holds the default value on creation for the "tlsp" field.
+	DefaultTlsp int
+	// TlspValidator is a validator for the "tlsp" field. It is called by the builders before save.
+	TlspValidator func(int) error
+	// DefaultJvp holds the default value on creation for the "jvp" field.
+	DefaultJvp int
+	// JvpValidator is a validator for the "jvp" field. It is called by the builders before save.
+	JvpValidator func(int) error
+	// DefaultIsh holds the default value on creation for the "ish" field.
+	DefaultIsh int
+	// IshValidator is a validator for the "ish" field. It is called by the builders before save.
+	IshValidator func(int) error
 )
 
 // Type defines the type for the "type" enum field.
@@ -227,6 +248,21 @@ func ByDollarValue(opts ...sql.OrderTermOption) OrderOption {
 // ByExecutionLocation orders the results by the execution_location field.
 func ByExecutionLocation(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldExecutionLocation, opts...).ToFunc()
+}
+
+// ByTlsp orders the results by the tlsp field.
+func ByTlsp(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldTlsp, opts...).ToFunc()
+}
+
+// ByJvp orders the results by the jvp field.
+func ByJvp(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldJvp, opts...).ToFunc()
+}
+
+// ByIsh orders the results by the ish field.
+func ByIsh(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldIsh, opts...).ToFunc()
 }
 
 // ByLeaderCount orders the results by leader count.

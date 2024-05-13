@@ -64,6 +64,24 @@ func init() {
 	projectDescDollarValue := projectFields[8].Descriptor()
 	// project.DollarValueValidator is a validator for the "dollar_value" field. It is called by the builders before save.
 	project.DollarValueValidator = projectDescDollarValue.Validators[0].(func(int) error)
+	// projectDescTlsp is the schema descriptor for tlsp field.
+	projectDescTlsp := projectFields[10].Descriptor()
+	// project.DefaultTlsp holds the default value on creation for the tlsp field.
+	project.DefaultTlsp = projectDescTlsp.Default.(int)
+	// project.TlspValidator is a validator for the "tlsp" field. It is called by the builders before save.
+	project.TlspValidator = projectDescTlsp.Validators[0].(func(int) error)
+	// projectDescJvp is the schema descriptor for jvp field.
+	projectDescJvp := projectFields[11].Descriptor()
+	// project.DefaultJvp holds the default value on creation for the jvp field.
+	project.DefaultJvp = projectDescJvp.Default.(int)
+	// project.JvpValidator is a validator for the "jvp" field. It is called by the builders before save.
+	project.JvpValidator = projectDescJvp.Validators[0].(func(int) error)
+	// projectDescIsh is the schema descriptor for ish field.
+	projectDescIsh := projectFields[12].Descriptor()
+	// project.DefaultIsh holds the default value on creation for the ish field.
+	project.DefaultIsh = projectDescIsh.Default.(int)
+	// project.IshValidator is a validator for the "ish" field. It is called by the builders before save.
+	project.IshValidator = projectDescIsh.Validators[0].(func(int) error)
 	userFields := schema.User{}.Fields()
 	_ = userFields
 	// userDescCreatedAt is the schema descriptor for created_at field.

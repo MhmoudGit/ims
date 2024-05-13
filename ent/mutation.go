@@ -2254,6 +2254,12 @@ type ProjectMutation struct {
 	dollar_value           *int
 	adddollar_value        *int
 	execution_location     *string
+	tlsp                   *int
+	addtlsp                *int
+	jvp                    *int
+	addjvp                 *int
+	ish                    *int
+	addish                 *int
 	clearedFields          map[string]struct{}
 	leader                 map[int]struct{}
 	removedleader          map[int]struct{}
@@ -2750,6 +2756,174 @@ func (m *ProjectMutation) ResetExecutionLocation() {
 	m.execution_location = nil
 }
 
+// SetTlsp sets the "tlsp" field.
+func (m *ProjectMutation) SetTlsp(i int) {
+	m.tlsp = &i
+	m.addtlsp = nil
+}
+
+// Tlsp returns the value of the "tlsp" field in the mutation.
+func (m *ProjectMutation) Tlsp() (r int, exists bool) {
+	v := m.tlsp
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTlsp returns the old "tlsp" field's value of the Project entity.
+// If the Project object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *ProjectMutation) OldTlsp(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTlsp is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTlsp requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTlsp: %w", err)
+	}
+	return oldValue.Tlsp, nil
+}
+
+// AddTlsp adds i to the "tlsp" field.
+func (m *ProjectMutation) AddTlsp(i int) {
+	if m.addtlsp != nil {
+		*m.addtlsp += i
+	} else {
+		m.addtlsp = &i
+	}
+}
+
+// AddedTlsp returns the value that was added to the "tlsp" field in this mutation.
+func (m *ProjectMutation) AddedTlsp() (r int, exists bool) {
+	v := m.addtlsp
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTlsp resets all changes to the "tlsp" field.
+func (m *ProjectMutation) ResetTlsp() {
+	m.tlsp = nil
+	m.addtlsp = nil
+}
+
+// SetJvp sets the "jvp" field.
+func (m *ProjectMutation) SetJvp(i int) {
+	m.jvp = &i
+	m.addjvp = nil
+}
+
+// Jvp returns the value of the "jvp" field in the mutation.
+func (m *ProjectMutation) Jvp() (r int, exists bool) {
+	v := m.jvp
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldJvp returns the old "jvp" field's value of the Project entity.
+// If the Project object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *ProjectMutation) OldJvp(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldJvp is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldJvp requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldJvp: %w", err)
+	}
+	return oldValue.Jvp, nil
+}
+
+// AddJvp adds i to the "jvp" field.
+func (m *ProjectMutation) AddJvp(i int) {
+	if m.addjvp != nil {
+		*m.addjvp += i
+	} else {
+		m.addjvp = &i
+	}
+}
+
+// AddedJvp returns the value that was added to the "jvp" field in this mutation.
+func (m *ProjectMutation) AddedJvp() (r int, exists bool) {
+	v := m.addjvp
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetJvp resets all changes to the "jvp" field.
+func (m *ProjectMutation) ResetJvp() {
+	m.jvp = nil
+	m.addjvp = nil
+}
+
+// SetIsh sets the "ish" field.
+func (m *ProjectMutation) SetIsh(i int) {
+	m.ish = &i
+	m.addish = nil
+}
+
+// Ish returns the value of the "ish" field in the mutation.
+func (m *ProjectMutation) Ish() (r int, exists bool) {
+	v := m.ish
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldIsh returns the old "ish" field's value of the Project entity.
+// If the Project object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *ProjectMutation) OldIsh(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldIsh is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldIsh requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldIsh: %w", err)
+	}
+	return oldValue.Ish, nil
+}
+
+// AddIsh adds i to the "ish" field.
+func (m *ProjectMutation) AddIsh(i int) {
+	if m.addish != nil {
+		*m.addish += i
+	} else {
+		m.addish = &i
+	}
+}
+
+// AddedIsh returns the value that was added to the "ish" field in this mutation.
+func (m *ProjectMutation) AddedIsh() (r int, exists bool) {
+	v := m.addish
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetIsh resets all changes to the "ish" field.
+func (m *ProjectMutation) ResetIsh() {
+	m.ish = nil
+	m.addish = nil
+}
+
 // AddLeaderIDs adds the "leader" edge to the User entity by ids.
 func (m *ProjectMutation) AddLeaderIDs(ids ...int) {
 	if m.leader == nil {
@@ -3000,7 +3174,7 @@ func (m *ProjectMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *ProjectMutation) Fields() []string {
-	fields := make([]string, 0, 10)
+	fields := make([]string, 0, 13)
 	if m.name != nil {
 		fields = append(fields, project.FieldName)
 	}
@@ -3031,6 +3205,15 @@ func (m *ProjectMutation) Fields() []string {
 	if m.execution_location != nil {
 		fields = append(fields, project.FieldExecutionLocation)
 	}
+	if m.tlsp != nil {
+		fields = append(fields, project.FieldTlsp)
+	}
+	if m.jvp != nil {
+		fields = append(fields, project.FieldJvp)
+	}
+	if m.ish != nil {
+		fields = append(fields, project.FieldIsh)
+	}
 	return fields
 }
 
@@ -3059,6 +3242,12 @@ func (m *ProjectMutation) Field(name string) (ent.Value, bool) {
 		return m.DollarValue()
 	case project.FieldExecutionLocation:
 		return m.ExecutionLocation()
+	case project.FieldTlsp:
+		return m.Tlsp()
+	case project.FieldJvp:
+		return m.Jvp()
+	case project.FieldIsh:
+		return m.Ish()
 	}
 	return nil, false
 }
@@ -3088,6 +3277,12 @@ func (m *ProjectMutation) OldField(ctx context.Context, name string) (ent.Value,
 		return m.OldDollarValue(ctx)
 	case project.FieldExecutionLocation:
 		return m.OldExecutionLocation(ctx)
+	case project.FieldTlsp:
+		return m.OldTlsp(ctx)
+	case project.FieldJvp:
+		return m.OldJvp(ctx)
+	case project.FieldIsh:
+		return m.OldIsh(ctx)
 	}
 	return nil, fmt.Errorf("unknown Project field %s", name)
 }
@@ -3167,6 +3362,27 @@ func (m *ProjectMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetExecutionLocation(v)
 		return nil
+	case project.FieldTlsp:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTlsp(v)
+		return nil
+	case project.FieldJvp:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetJvp(v)
+		return nil
+	case project.FieldIsh:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetIsh(v)
+		return nil
 	}
 	return fmt.Errorf("unknown Project field %s", name)
 }
@@ -3178,6 +3394,15 @@ func (m *ProjectMutation) AddedFields() []string {
 	if m.adddollar_value != nil {
 		fields = append(fields, project.FieldDollarValue)
 	}
+	if m.addtlsp != nil {
+		fields = append(fields, project.FieldTlsp)
+	}
+	if m.addjvp != nil {
+		fields = append(fields, project.FieldJvp)
+	}
+	if m.addish != nil {
+		fields = append(fields, project.FieldIsh)
+	}
 	return fields
 }
 
@@ -3188,6 +3413,12 @@ func (m *ProjectMutation) AddedField(name string) (ent.Value, bool) {
 	switch name {
 	case project.FieldDollarValue:
 		return m.AddedDollarValue()
+	case project.FieldTlsp:
+		return m.AddedTlsp()
+	case project.FieldJvp:
+		return m.AddedJvp()
+	case project.FieldIsh:
+		return m.AddedIsh()
 	}
 	return nil, false
 }
@@ -3203,6 +3434,27 @@ func (m *ProjectMutation) AddField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddDollarValue(v)
+		return nil
+	case project.FieldTlsp:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTlsp(v)
+		return nil
+	case project.FieldJvp:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddJvp(v)
+		return nil
+	case project.FieldIsh:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddIsh(v)
 		return nil
 	}
 	return fmt.Errorf("unknown Project numeric field %s", name)
@@ -3260,6 +3512,15 @@ func (m *ProjectMutation) ResetField(name string) error {
 		return nil
 	case project.FieldExecutionLocation:
 		m.ResetExecutionLocation()
+		return nil
+	case project.FieldTlsp:
+		m.ResetTlsp()
+		return nil
+	case project.FieldJvp:
+		m.ResetJvp()
+		return nil
+	case project.FieldIsh:
+		m.ResetIsh()
 		return nil
 	}
 	return fmt.Errorf("unknown Project field %s", name)

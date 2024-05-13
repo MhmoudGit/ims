@@ -176,6 +176,69 @@ func (pu *ProjectUpdate) SetNillableExecutionLocation(s *string) *ProjectUpdate 
 	return pu
 }
 
+// SetTlsp sets the "tlsp" field.
+func (pu *ProjectUpdate) SetTlsp(i int) *ProjectUpdate {
+	pu.mutation.ResetTlsp()
+	pu.mutation.SetTlsp(i)
+	return pu
+}
+
+// SetNillableTlsp sets the "tlsp" field if the given value is not nil.
+func (pu *ProjectUpdate) SetNillableTlsp(i *int) *ProjectUpdate {
+	if i != nil {
+		pu.SetTlsp(*i)
+	}
+	return pu
+}
+
+// AddTlsp adds i to the "tlsp" field.
+func (pu *ProjectUpdate) AddTlsp(i int) *ProjectUpdate {
+	pu.mutation.AddTlsp(i)
+	return pu
+}
+
+// SetJvp sets the "jvp" field.
+func (pu *ProjectUpdate) SetJvp(i int) *ProjectUpdate {
+	pu.mutation.ResetJvp()
+	pu.mutation.SetJvp(i)
+	return pu
+}
+
+// SetNillableJvp sets the "jvp" field if the given value is not nil.
+func (pu *ProjectUpdate) SetNillableJvp(i *int) *ProjectUpdate {
+	if i != nil {
+		pu.SetJvp(*i)
+	}
+	return pu
+}
+
+// AddJvp adds i to the "jvp" field.
+func (pu *ProjectUpdate) AddJvp(i int) *ProjectUpdate {
+	pu.mutation.AddJvp(i)
+	return pu
+}
+
+// SetIsh sets the "ish" field.
+func (pu *ProjectUpdate) SetIsh(i int) *ProjectUpdate {
+	pu.mutation.ResetIsh()
+	pu.mutation.SetIsh(i)
+	return pu
+}
+
+// SetNillableIsh sets the "ish" field if the given value is not nil.
+func (pu *ProjectUpdate) SetNillableIsh(i *int) *ProjectUpdate {
+	if i != nil {
+		pu.SetIsh(*i)
+	}
+	return pu
+}
+
+// AddIsh adds i to the "ish" field.
+func (pu *ProjectUpdate) AddIsh(i int) *ProjectUpdate {
+	pu.mutation.AddIsh(i)
+	return pu
+}
+
 // AddLeaderIDs adds the "leader" edge to the User entity by IDs.
 func (pu *ProjectUpdate) AddLeaderIDs(ids ...int) *ProjectUpdate {
 	pu.mutation.AddLeaderIDs(ids...)
@@ -384,6 +447,21 @@ func (pu *ProjectUpdate) check() error {
 			return &ValidationError{Name: "dollar_value", err: fmt.Errorf(`ent: validator failed for field "Project.dollar_value": %w`, err)}
 		}
 	}
+	if v, ok := pu.mutation.Tlsp(); ok {
+		if err := project.TlspValidator(v); err != nil {
+			return &ValidationError{Name: "tlsp", err: fmt.Errorf(`ent: validator failed for field "Project.tlsp": %w`, err)}
+		}
+	}
+	if v, ok := pu.mutation.Jvp(); ok {
+		if err := project.JvpValidator(v); err != nil {
+			return &ValidationError{Name: "jvp", err: fmt.Errorf(`ent: validator failed for field "Project.jvp": %w`, err)}
+		}
+	}
+	if v, ok := pu.mutation.Ish(); ok {
+		if err := project.IshValidator(v); err != nil {
+			return &ValidationError{Name: "ish", err: fmt.Errorf(`ent: validator failed for field "Project.ish": %w`, err)}
+		}
+	}
 	return nil
 }
 
@@ -431,6 +509,24 @@ func (pu *ProjectUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if value, ok := pu.mutation.ExecutionLocation(); ok {
 		_spec.SetField(project.FieldExecutionLocation, field.TypeString, value)
+	}
+	if value, ok := pu.mutation.Tlsp(); ok {
+		_spec.SetField(project.FieldTlsp, field.TypeInt, value)
+	}
+	if value, ok := pu.mutation.AddedTlsp(); ok {
+		_spec.AddField(project.FieldTlsp, field.TypeInt, value)
+	}
+	if value, ok := pu.mutation.Jvp(); ok {
+		_spec.SetField(project.FieldJvp, field.TypeInt, value)
+	}
+	if value, ok := pu.mutation.AddedJvp(); ok {
+		_spec.AddField(project.FieldJvp, field.TypeInt, value)
+	}
+	if value, ok := pu.mutation.Ish(); ok {
+		_spec.SetField(project.FieldIsh, field.TypeInt, value)
+	}
+	if value, ok := pu.mutation.AddedIsh(); ok {
+		_spec.AddField(project.FieldIsh, field.TypeInt, value)
 	}
 	if pu.mutation.LeaderCleared() {
 		edge := &sqlgraph.EdgeSpec{
@@ -779,6 +875,69 @@ func (puo *ProjectUpdateOne) SetNillableExecutionLocation(s *string) *ProjectUpd
 	return puo
 }
 
+// SetTlsp sets the "tlsp" field.
+func (puo *ProjectUpdateOne) SetTlsp(i int) *ProjectUpdateOne {
+	puo.mutation.ResetTlsp()
+	puo.mutation.SetTlsp(i)
+	return puo
+}
+
+// SetNillableTlsp sets the "tlsp" field if the given value is not nil.
+func (puo *ProjectUpdateOne) SetNillableTlsp(i *int) *ProjectUpdateOne {
+	if i != nil {
+		puo.SetTlsp(*i)
+	}
+	return puo
+}
+
+// AddTlsp adds i to the "tlsp" field.
+func (puo *ProjectUpdateOne) AddTlsp(i int) *ProjectUpdateOne {
+	puo.mutation.AddTlsp(i)
+	return puo
+}
+
+// SetJvp sets the "jvp" field.
+func (puo *ProjectUpdateOne) SetJvp(i int) *ProjectUpdateOne {
+	puo.mutation.ResetJvp()
+	puo.mutation.SetJvp(i)
+	return puo
+}
+
+// SetNillableJvp sets the "jvp" field if the given value is not nil.
+func (puo *ProjectUpdateOne) SetNillableJvp(i *int) *ProjectUpdateOne {
+	if i != nil {
+		puo.SetJvp(*i)
+	}
+	return puo
+}
+
+// AddJvp adds i to the "jvp" field.
+func (puo *ProjectUpdateOne) AddJvp(i int) *ProjectUpdateOne {
+	puo.mutation.AddJvp(i)
+	return puo
+}
+
+// SetIsh sets the "ish" field.
+func (puo *ProjectUpdateOne) SetIsh(i int) *ProjectUpdateOne {
+	puo.mutation.ResetIsh()
+	puo.mutation.SetIsh(i)
+	return puo
+}
+
+// SetNillableIsh sets the "ish" field if the given value is not nil.
+func (puo *ProjectUpdateOne) SetNillableIsh(i *int) *ProjectUpdateOne {
+	if i != nil {
+		puo.SetIsh(*i)
+	}
+	return puo
+}
+
+// AddIsh adds i to the "ish" field.
+func (puo *ProjectUpdateOne) AddIsh(i int) *ProjectUpdateOne {
+	puo.mutation.AddIsh(i)
+	return puo
+}
+
 // AddLeaderIDs adds the "leader" edge to the User entity by IDs.
 func (puo *ProjectUpdateOne) AddLeaderIDs(ids ...int) *ProjectUpdateOne {
 	puo.mutation.AddLeaderIDs(ids...)
@@ -1000,6 +1159,21 @@ func (puo *ProjectUpdateOne) check() error {
 			return &ValidationError{Name: "dollar_value", err: fmt.Errorf(`ent: validator failed for field "Project.dollar_value": %w`, err)}
 		}
 	}
+	if v, ok := puo.mutation.Tlsp(); ok {
+		if err := project.TlspValidator(v); err != nil {
+			return &ValidationError{Name: "tlsp", err: fmt.Errorf(`ent: validator failed for field "Project.tlsp": %w`, err)}
+		}
+	}
+	if v, ok := puo.mutation.Jvp(); ok {
+		if err := project.JvpValidator(v); err != nil {
+			return &ValidationError{Name: "jvp", err: fmt.Errorf(`ent: validator failed for field "Project.jvp": %w`, err)}
+		}
+	}
+	if v, ok := puo.mutation.Ish(); ok {
+		if err := project.IshValidator(v); err != nil {
+			return &ValidationError{Name: "ish", err: fmt.Errorf(`ent: validator failed for field "Project.ish": %w`, err)}
+		}
+	}
 	return nil
 }
 
@@ -1064,6 +1238,24 @@ func (puo *ProjectUpdateOne) sqlSave(ctx context.Context) (_node *Project, err e
 	}
 	if value, ok := puo.mutation.ExecutionLocation(); ok {
 		_spec.SetField(project.FieldExecutionLocation, field.TypeString, value)
+	}
+	if value, ok := puo.mutation.Tlsp(); ok {
+		_spec.SetField(project.FieldTlsp, field.TypeInt, value)
+	}
+	if value, ok := puo.mutation.AddedTlsp(); ok {
+		_spec.AddField(project.FieldTlsp, field.TypeInt, value)
+	}
+	if value, ok := puo.mutation.Jvp(); ok {
+		_spec.SetField(project.FieldJvp, field.TypeInt, value)
+	}
+	if value, ok := puo.mutation.AddedJvp(); ok {
+		_spec.AddField(project.FieldJvp, field.TypeInt, value)
+	}
+	if value, ok := puo.mutation.Ish(); ok {
+		_spec.SetField(project.FieldIsh, field.TypeInt, value)
+	}
+	if value, ok := puo.mutation.AddedIsh(); ok {
+		_spec.AddField(project.FieldIsh, field.TypeInt, value)
 	}
 	if puo.mutation.LeaderCleared() {
 		edge := &sqlgraph.EdgeSpec{

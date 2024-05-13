@@ -28,6 +28,9 @@ func (Project) Fields() []ent.Field {
 		StringOneOf("contracting_strategies", ValidProjectContractingStrategies),
 		field.Int("dollar_value").NonNegative(),
 		field.String("execution_location"),
+		field.Int("tlsp").NonNegative().Default(0),
+		field.Int("jvp").NonNegative().Default(0),
+		field.Int("ish").NonNegative().Default(0),
 	}
 }
 
