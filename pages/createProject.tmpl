@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col">
                     <label for="project-name">Project Name</label>
-                    <input type="text" class="form-control" id="project-name" name="name" placeholder="Project Name"
+                    <input required type="text" class="form-control" id="project-name" name="name" placeholder="Project Name"
                         aria-label="Project Name">
                 </div>
                 <div class="col">
@@ -60,24 +60,24 @@
                 </div>
                 <div class="col">
                     <label for="dollarValue">Project Dollar Value:</label>
-                    <input type="number" class="form-control" id="dollarValue" name="dollarValue" placeholder="$">
+                    <input required type="number" class="form-control" id="dollarValue" name="dollarValue" placeholder="$">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label for="project-location">Location</label>
-                    <input type="text" class="form-control" id="project-location" name="location" placeholder="Location">
+                    <input required type="text" class="form-control" id="project-location" name="location" placeholder="Location">
                 </div>
                 <div class="col">
                     <label for="execution-locations">Project Execution Location</label>
-                    <input type="text" class="form-control" id="execution-locations" name="executionLocation" placeholder="Location">
+                    <input required type="text" class="form-control" id="execution-locations" name="executionLocation" placeholder="Location">
 
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label for="owners">Owners</label>
-                    <input type="text" class="form-control" id="owners" name="owner" placeholder="Name of Owner">
+                    <input required type="text" class="form-control" id="owners" name="owner" placeholder="Name of Owner">
 
                 </div>
                 <div class="col">
@@ -93,17 +93,17 @@
             <div class="row">
                 <div class="col">
                     <label for="tlsp">No. of top level scope packages</label>
-                    <input type="number" class="form-control" id="tlsp" name="tlsp" placeholder="Enter a number">
+                    <input required type="number" class="form-control" id="tlsp" name="tlsp" placeholder="Enter a number">
 
                 </div>
                 <div class="col">
                     <label for="jvp">No. of joint-venture partners </label>
-                    <input type="number" class="form-control" id="jvp" name="jvp" placeholder="Enter a number">
+                    <input required type="number" class="form-control" id="jvp" name="jvp" placeholder="Enter a number">
 
                 </div>
                 <div class="col">
                     <label for="ish">No. of involved stackeholders </label>
-                    <input type="number" class="form-control" id="ish" name="ish" placeholder="Enter a number">
+                    <input required type="number" class="form-control" id="ish" name="ish" placeholder="Enter a number">
 
                 </div>
             </div>
@@ -111,7 +111,7 @@
             <div class="row">
                     <div class="col">
                         <label for="leader">Leader</label>
-                        <input type="email" class="form-control" id="leader" name="leader" placeholder="Email of Project Leader">
+                        <input required type="email" class="form-control" id="leader" name="leader" placeholder="Email of Project Leader">
                     </div>
             </div>
 
@@ -125,7 +125,7 @@
                     </div>
                     <!-- email field should not appear on first reload -->
                     <!-- <div> 
-                        <input type="email" name="members[]" id="members" placeholder="Email of Member">
+                        <input required type="email" name="members[]" id="members" placeholder="Email of Member">
                         <button type="button"  onclick="removeEmailInput()" style="background-color: red; color: white; border: none; cursor: pointer;"> Remove Email
                         </button>
                     </div> -->
@@ -147,7 +147,7 @@
         var emailInputs = document.getElementById("emailInputs");
     var newDiv = document.createElement("div"); // Create a new div element
     newDiv.innerHTML = `
-        <input type="email" name="members[]" placeholder="Email of Member">
+        <input required type="email" name="members[]" placeholder="Email of Member">
         <button type="button" onclick="removeEmailInput()" style="background-color: red; color: white; border: none; cursor: pointer; margin-top: 10px;">Remove Email</button>
     `;
     emailInputs.appendChild(newDiv);
